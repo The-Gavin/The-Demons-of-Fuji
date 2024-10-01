@@ -9,3 +9,7 @@
 * Item 2 - Created Trello board
 * Item 3 - Created itch.io account
 * Item 4 - Exported project as html and uploaded to itch.io
+
+### 2024-09-24 - :Pre-Class/In-Class Work
+* Item 1 - Updated itch.io page to be public
+* Item 2 - Uploaded proposal PDF to github
