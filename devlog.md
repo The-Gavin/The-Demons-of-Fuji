@@ -1,4 +1,4 @@
-### 2024-09-24 - 3.5hr: Pre-Class/In-Class Work
+### 2024-10-1 - 3.5hr: Pre-Class/In-Class Work
 * Updated itch.io page to be public
 * Uploaded proposal PDF to github
 * Downloaded "RPG Fantasy Battlers" asset pack from itch.io
