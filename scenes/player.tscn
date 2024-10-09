@@ -5,6 +5,18 @@
 [sub_resource type="GDScript" id="GDScript_b82uh"]
 script/source = "extends CharacterBody2D
 
+@onready var progress_bar: ProgressBar = $ProgressBar
+
+@export var MAX_HEALTH: float = 7
+
+var health: float = 7:
+	set(value):
+		health = value
+		_update_progress_bar()
+		
+func _update_progress_bar():
+	progress_bar.value = (health/MAX_HEALTH) * 100
+
 @export var speed = 300
 
 # Called when the node enters the scene tree for the first time.
@@ -13,8 +25,8 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	position += Input.get_vector(\"left\", \"right\", \"up\", \"down\")*speed*delta
+#func _process(delta: float) -> void:
+	#position += Input.get_vector(\"left\", \"right\", \"up\", \"down\")*speed*delta
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_536qm"]
@@ -30,3 +42,10 @@ texture = ExtResource("1_dch7r")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6.75, -61)
 shape = SubResource("RectangleShape2D_536qm")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+texture_filter = 1
+offset_left = -27.0
+offset_right = 35.0
+offset_bottom = 27.0
+value = 100.0

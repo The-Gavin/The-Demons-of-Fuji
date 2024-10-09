@@ -1,12 +1,77 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmk3tnw1571iy"]
+[gd_scene load_steps=4 format=3 uid="uid://bmk3tnw1571iy"]
 
 [ext_resource type="PackedScene" uid="uid://u5rlfpjx30gp" path="res://scenes/player.tscn" id="1_fehhq"]
+[ext_resource type="PackedScene" uid="uid://jq3mr7md2cra" path="res://scenes/enemy_group.tscn" id="2_66uvb"]
+[ext_resource type="Texture2D" uid="uid://c6ddr1a8c7tt0" path="res://assets/Previewx3.png" id="3_dastd"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_fehhq")]
-position = Vector2(4, -3)
+z_index = 1
+position = Vector2(-76, 104)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(12, -55)
 zoom = Vector2(1.2, 1.2)
+
+[node name="EnemyGroup" parent="." instance=ExtResource("2_66uvb")]
+position = Vector2(264, -6)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.737193, 0.737193, 0.737193, 1)
+z_index = -3
+offset_left = -469.0
+offset_top = -327.0
+offset_right = 739.0
+offset_bottom = 219.0
+texture = ExtResource("3_dastd")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Choice" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = -197.0
+offset_top = -93.0
+offset_right = -141.0
+offset_bottom = 183.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Head" type="Button" parent="CanvasLayer/Choice"]
+layout_mode = 2
+text = "Head"
+
+[node name="L Arm" type="Button" parent="CanvasLayer/Choice"]
+layout_mode = 2
+disabled = true
+text = "L Arm"
+
+[node name="R Arm" type="Button" parent="CanvasLayer/Choice"]
+layout_mode = 2
+disabled = true
+text = "R Arm"
+
+[node name="L Leg" type="Button" parent="CanvasLayer/Choice"]
+layout_mode = 2
+disabled = true
+text = "L Leg"
+
+[node name="R Leg" type="Button" parent="CanvasLayer/Choice"]
+layout_mode = 2
+disabled = true
+text = "R Leg"
+
+[node name="Hip" type="Button" parent="CanvasLayer/Choice"]
+layout_mode = 2
+disabled = true
+text = "Hip"
+
+[node name="Torso" type="Button" parent="CanvasLayer/Choice"]
+layout_mode = 2
+disabled = true
+text = "Torso"
+
+[node name="Chest" type="Button" parent="CanvasLayer/Choice"]
+layout_mode = 2
+disabled = true
+text = "Chest"
