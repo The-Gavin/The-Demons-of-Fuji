@@ -30,19 +30,25 @@ func _process(_delta):
 		if Input.is_action_just_pressed("select"):
 			action_queue.push_back(index)
 		
-	if action_queue.size() == enemies.size() and not is_battling:
+	if action_queue.size() == 1 and not is_battling: #set to 1 because only allowed to take one action, if i wanted to act for every number of enemies there are it'd have to be enemies.size()
 		is_battling = true
 		_action(action_queue)
 		
-func _action(stack):
+func _action(stack: Array, apply_damage: bool = true, move_direction: String = "down"):
 	for i in stack:
-		enemies[i].take_damage(1)
+		if apply_damage:
+			enemies[i].take_damage(1)  # You can also customize the damage amount based on the enemy type if needed
 		await get_tree().create_timer(1).timeout
-		move_enemy(i, "down")
-		move_enemy(i, "up")
+		
+		if move_direction == "down":
+			move_enemy(i, "down")
+		elif move_direction == "up":
+			move_enemy(i, "up")
+
 	action_queue.clear()
 	is_battling = false
 	show_choice()
+
 		
 func switch_focus(x,y):
 	enemies[x].focus()
@@ -51,7 +57,6 @@ func switch_focus(x,y):
 func show_choice():
 	choice.show()
 	choice.find_child("Head").grab_focus()
-	choice.find_child("L Arm").grab_focus()
 	
 func _reset_focus():
 	index = 0
@@ -65,29 +70,20 @@ func _start_choosing():
 func _on_head_pressed() -> void:
 	choice.hide()
 	_start_choosing()
-	move_enemy(index, "down")
-	
+	_action([index], true, "down")  # Call _action with damage and move down
+
 func _on_l_arm_pressed() -> void:
 	choice.hide()
 	_start_choosing()
-	move_enemy(index, "up")
-
+	_action([index], true, "up")  # Call _action with damage and move up
 
 func move_enemy(selected_index: int, direction: String):
-	# Move the selected enemy's Y position, within limits
 	var enemy = enemies[selected_index]
-	var new_y_position = enemy.position.y
 
-	# Adjust position based on the direction
+	# Set the Y position based on the direction
 	if direction == "down":
-		new_y_position += move_amount  # Move down (increase Y)
+		if enemy.position.y != max_y_position:
+			enemy.position.y = max_y_position  # Set to maximum Y position
+			enemy.take_damage(1)
 	elif direction == "up":
-		new_y_position -= move_amount  # Move up (decrease Y)
-
-	# Check if the new position is within the limits
-	if new_y_position < min_y_position:
-		new_y_position = min_y_position
-	elif new_y_position > max_y_position:
-		new_y_position = max_y_position
-
-	enemy.position.y = new_y_position  # Update the enemy's position
+		enemy.position.y = min_y_position  # Set to minimum Y position

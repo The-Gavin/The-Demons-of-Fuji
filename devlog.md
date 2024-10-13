@@ -1,3 +1,9 @@
+### 2024-10-13 - 3hr: More Pre-Playtest Work
+* Tried again to implement project mechanic. Struggling to make it so that the Head button functions the same way as the L Arm button.
+* Breakthrough made with chatGPT, I attempted to simulate overloaded methods in gdScript because I noticed that my _action method was causing the enemy to move regardless of the button used.
+* Progress made due to method overloading solution, but now the problem is that I cannot choose the second enemy, the action goes through as soon as I press a button, making it so that only the first enemy is affected.
+
+
 ### 2024-10-12 - 3hr: Pre-Playtest Work
 * Made attacking "turn based" by waiting until every enemy has been selected to initiate the attack
 * Updated targeting reticle
@@ -6,7 +12,7 @@
 * Tried to implement project mechanic with the assistance of chatGPT, but could not get the Head button to function as intended
 
 
-### 2024-10-8 - 4hr: In-Class Work
+### 2024-10-8 - 4hr: In-Class Work + After class work
 * Uploaded cardinal movement playtest to itch
 * Watched this video for help creating the battle scene: https://youtu.be/HEexLmt7enc?si=C21M7QN-WMbyYR4h
 * Added enemy sprite

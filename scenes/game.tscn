@@ -40,11 +40,11 @@ size_flags_vertical = 4
 
 [node name="Head" type="Button" parent="CanvasLayer/Choice"]
 layout_mode = 2
-text = "Head"
+text = "Head Slam"
 
 [node name="L Arm" type="Button" parent="CanvasLayer/Choice"]
 layout_mode = 2
-text = "L Arm"
+text = "Uppercut"
 
 [node name="R Arm" type="Button" parent="CanvasLayer/Choice"]
 layout_mode = 2

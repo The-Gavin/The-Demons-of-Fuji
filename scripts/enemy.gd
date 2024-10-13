@@ -29,5 +29,5 @@ func take_damage(value):
 		_on_death()  # Call the death handler
 		
 func _on_death():
-	# Add any death animation or effect here if desired
+	# Add death animation here
 	queue_free()  # Remove the enemy from the scene
