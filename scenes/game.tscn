@@ -28,12 +28,13 @@ texture = ExtResource("3_dastd")
 expand_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="Choice" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = -197.0
-offset_top = -93.0
-offset_right = -141.0
-offset_bottom = 183.0
+offset_left = -198.0
+offset_top = -112.0
+offset_right = -142.0
+offset_bottom = 164.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
@@ -43,7 +44,6 @@ text = "Head"
 
 [node name="L Arm" type="Button" parent="CanvasLayer/Choice"]
 layout_mode = 2
-disabled = true
 text = "L Arm"
 
 [node name="R Arm" type="Button" parent="CanvasLayer/Choice"]
@@ -75,3 +75,6 @@ text = "Torso"
 layout_mode = 2
 disabled = true
 text = "Chest"
+
+[connection signal="pressed" from="CanvasLayer/Choice/Head" to="EnemyGroup" method="_on_head_pressed"]
+[connection signal="pressed" from="CanvasLayer/Choice/L Arm" to="EnemyGroup" method="_on_l_arm_pressed"]

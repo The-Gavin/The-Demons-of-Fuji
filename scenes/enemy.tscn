@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dsmrdhu7w3h3d" path="res://assets/06.png" id="1_0bhcn"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_6r7ug"]
-[ext_resource type="Texture2D" uid="uid://dyn53tergl3s" path="res://assets/red_arrow_PNG20.png" id="2_snqn7"]
+[ext_resource type="Texture2D" uid="uid://b82xrawb6sf2t" path="res://assets/blue circle.png" id="3_ca7b5"]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_6r7ug")
@@ -18,7 +18,7 @@ offset_bottom = 27.0
 value = 100.0
 
 [node name="Focus" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-110, -37)
-scale = Vector2(0.0480347, 0.0531616)
-texture = ExtResource("2_snqn7")
+modulate = Color(1, 1, 1, 0.615686)
+position = Vector2(-1.00001, -44)
+scale = Vector2(0.186127, 0.182831)
+texture = ExtResource("3_ca7b5")

@@ -1,4 +1,12 @@
-### 2024-10-8 - In-Class Work
+### 2024-10-12 - 3hr: Pre-Playtest Work
+* Made attacking "turn based" by waiting until every enemy has been selected to initiate the attack
+* Updated targeting reticle
+* Finished tutorial "https://youtu.be/HEexLmt7enc?si=C21M7QN-WMbyYR4h", have fully implemented the basics of turn based combat, enemies are not currently able to act
+* Tried to implement enemy death, but using queue_free() made the code crash because the focus function would try to look for an index that wasn't there anymore. Left in for now
+* Tried to implement project mechanic with the assistance of chatGPT, but could not get the Head button to function as intended
+
+
+### 2024-10-8 - 4hr: In-Class Work
 * Uploaded cardinal movement playtest to itch
 * Watched this video for help creating the battle scene: https://youtu.be/HEexLmt7enc?si=C21M7QN-WMbyYR4h
 * Added enemy sprite
