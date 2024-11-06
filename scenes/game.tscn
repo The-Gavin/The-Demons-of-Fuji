@@ -76,5 +76,13 @@ layout_mode = 2
 disabled = true
 text = "Chest"
 
+[node name="TextEdit" type="TextEdit" parent="."]
+visible = false
+offset_left = 62.0
+offset_top = -202.0
+offset_right = 140.0
+offset_bottom = -170.0
+text = "You Win!"
+
 [connection signal="pressed" from="CanvasLayer/Choice/Head" to="EnemyGroup" method="_on_head_pressed"]
 [connection signal="pressed" from="CanvasLayer/Choice/L Arm" to="EnemyGroup" method="_on_l_arm_pressed"]

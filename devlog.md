@@ -1,3 +1,16 @@
+### 2024-11-5 - 2.5hr: Class Work
+* Found out issue with uppercut not sending enemy up. Comparing to old code, the buttons call straight to the action function with their string in the old version, whereas in the new code the buttons will allow select to be pressed, and pressing select calls the action function with default values.
+* To put it succinctly: Calling action after pressing select puts defult values through, but we need action to run after pressing select to unleash the attack.
+* Discovered new problem. Nothing stops player from pressing select multiple times, which will continue to do damage without restriction. Silver lining is giving me a new idea for an attack.
+* Fixed directional issues.
+* Partially fixed death issues. Killing one enemy now removes it from the array and pulls all other indexes back, however killing all enemies will cause the game to crash since I haven't created a win state.
+* Fixed issue of player being able to select multiple times
+
+
+### 2024-10-29 - 2.5hr: Class Work
+* Successfully implemented the order of operations for selecting moves. The player chooses an attack, then targets an enemy, and then damages the enemy they targetted.
+* After implementing the previous successful change, a new problem arose in that the L Arm (or uppercut) button no longer sends the enemy up, and now sends the enemy chosen down. Caused by function having a default value set to down and being called before the buttons are pressed.
+
 ### 2024-10-13 - 3hr: More Pre-Playtest Work
 * Tried again to implement project mechanic. Struggling to make it so that the Head button functions the same way as the L Arm button.
 * Breakthrough made with chatGPT, I attempted to simulate overloaded methods in gdScript because I noticed that my _action method was causing the enemy to move regardless of the button used.

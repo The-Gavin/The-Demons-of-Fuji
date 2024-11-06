@@ -2,9 +2,12 @@ extends Node2D
 
 @onready var _focus: Sprite2D = $Focus
 @onready var progress_bar: ProgressBar = $ProgressBar
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var enemy: Node2D = $"."
 
 @export var MAX_HEALTH: float = 7
 
+var dead: bool = false
 var health: float = 7:
 	set(value):
 		health = value
@@ -26,8 +29,10 @@ func take_damage(value):
 	health -= value
 	_update_progress_bar()  # Update the progress bar after taking damage
 	if health <= 0:
-		_on_death()  # Call the death handler
+		on_death()  # Call the death handler
 		
-func _on_death():
+func on_death():
 	# Add death animation here
-	queue_free()  # Remove the enemy from the scene
+	# Remove the enemy from the scene
+	enemy.hide()
+	dead = true
