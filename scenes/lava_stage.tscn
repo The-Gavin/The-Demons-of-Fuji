@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwignwhqxc610"]
+
+[ext_resource type="Texture2D" uid="uid://cd82t3g76g07w" path="res://assets/lava.jpg" id="1_mb8oc"]
+[ext_resource type="PackedScene" uid="uid://u5rlfpjx30gp" path="res://scenes/player.tscn" id="1_pq0nd"]
+[ext_resource type="PackedScene" uid="uid://jq3mr7md2cra" path="res://scenes/enemy_group.tscn" id="3_n7pso"]
+
+[node name="Lava Stage" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_pq0nd")]
+z_index = 1
+position = Vector2(-213, 146)
+scale = Vector2(2, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -2060.0
+offset_top = -728.0
+offset_right = 574.0
+offset_bottom = 387.0
+texture = ExtResource("1_mb8oc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Choice" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = -522.0
+offset_top = -137.0
+offset_right = -431.0
+offset_bottom = 139.0
+scale = Vector2(2, 2)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Head" type="Button" parent="CanvasLayer/Choice"]
+layout_mode = 2
+text = "Head Slam"
+
+[node name="L Arm" type="Button" parent="CanvasLayer/Choice"]
+layout_mode = 2
+text = "Uppercut"
+
+[node name="R Arm" type="Button" parent="CanvasLayer/Choice"]
+layout_mode = 2
+disabled = true
+text = "R Arm"
+
+[node name="Chest" type="Button" parent="CanvasLayer/Choice"]
+layout_mode = 2
+disabled = true
+text = "Chest"
+
+[node name="EnemyGroup" parent="." instance=ExtResource("3_n7pso")]
+position = Vector2(73, 14)
+scale = Vector2(2, 2)

@@ -10,6 +10,7 @@ var move_amount: int = 100
 var min_y_position: float = 0  # Minimum Y position
 var max_y_position: float = 100  # Maximum Y position
 var waiting_for_selection: bool = false
+var win = false
 
 @onready var choice: VBoxContainer = $"../CanvasLayer/Choice"
 
@@ -21,23 +22,26 @@ func _ready():
 	show_choice()
 
 func _process(_delta):
-	if not choice.visible && waiting_for_selection:
-		if Input.is_action_just_pressed("down"):
-			if index < enemies.size() - 1:
-				index += 1
-				switch_focus(index, index-1)
-		if Input.is_action_just_pressed("up"):
-			if index > 0:
-				index -= 1
-				switch_focus(index, index+1)
-		if Input.is_action_just_pressed("select"):
-			waiting_for_selection = false
-			action_queue.push_back(index)
-			attack = true
-		
-	if action_queue.size() == 1 and not is_battling: #set to 1 because only allowed to take one action, if i wanted to act for every number of enemies there are it'd have to be enemies.size()
-		is_battling = true
-		_action(action_queue, true, direction)
+	if win:
+		get_tree().change_scene_to_file("res://scenes/lava_stage.tscn")
+	else:
+		if not choice.visible && waiting_for_selection:
+			if Input.is_action_just_pressed("down"):
+				if index < enemies.size() - 1:
+					index += 1
+					switch_focus(index, index-1)
+			if Input.is_action_just_pressed("up"):
+				if index > 0:
+					index -= 1
+					switch_focus(index, index+1)
+			if Input.is_action_just_pressed("select"):
+				waiting_for_selection = false
+				action_queue.push_back(index)
+				attack = true
+			
+		if action_queue.size() == 1 and not is_battling: #set to 1 because only allowed to take one action, if i wanted to act for every number of enemies there are it'd have to be enemies.size()
+			is_battling = true
+			_action(action_queue, true, direction)
 		
 func _action(stack: Array, apply_damage: bool = true, move_direction: String = "down"):
 	for i in stack:
@@ -45,20 +49,21 @@ func _action(stack: Array, apply_damage: bool = true, move_direction: String = "
 			enemies[i].take_damage(1)
 			if enemies[i].health <= 0:
 				enemies.erase(enemies[i])
-				#enemies[i].on_death()
-				#cleanup the array
-				  # You can also customize the damage amount based on the enemy type if needed
-		await get_tree().create_timer(1).timeout
-		
-		if move_direction == "down":
-			move_enemy(i, "down")
-		elif move_direction == "up":
-			move_enemy(i, "up")
+				await get_tree().create_timer(.75).timeout
+			else:
+				await get_tree().create_timer(.75).timeout
+				if move_direction == "down":
+					move_enemy(i, "down")
+				elif move_direction == "up":
+					move_enemy(i, "up")
 
-	action_queue.clear()
-	is_battling = false
-	attack = false
-	show_choice()
+	if enemies.size() == 0:
+		win = true
+	else:
+		action_queue.clear()
+		is_battling = false
+		attack = false
+		show_choice()
 
 		
 func switch_focus(x,y):

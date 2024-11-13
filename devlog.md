@@ -1,3 +1,8 @@
+### 2024-11-12 - 2.5hr: Class Work
+* Fixed issue with killing the first enemy applying the directional damage to the second.
+* Created new scene for second level, updated trello with new tasks for second level
+* Updated code to change scenes when all enemies have died
+
 ### 2024-11-5 - 2.5hr: Class Work
 * Found out issue with uppercut not sending enemy up. Comparing to old code, the buttons call straight to the action function with their string in the old version, whereas in the new code the buttons will allow select to be pressed, and pressing select calls the action function with default values.
 * To put it succinctly: Calling action after pressing select puts defult values through, but we need action to run after pressing select to unleash the attack.

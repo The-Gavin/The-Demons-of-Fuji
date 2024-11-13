@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://jq3mr7md2cra" path="res://scenes/enemy_group.tscn" id="2_66uvb"]
 [ext_resource type="Texture2D" uid="uid://c6ddr1a8c7tt0" path="res://assets/Previewx3.png" id="3_dastd"]
 
-[node name="Game" type="Node2D"]
+[node name="Forest Stage" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_fehhq")]
 z_index = 1
@@ -50,26 +50,6 @@ text = "Uppercut"
 layout_mode = 2
 disabled = true
 text = "R Arm"
-
-[node name="L Leg" type="Button" parent="CanvasLayer/Choice"]
-layout_mode = 2
-disabled = true
-text = "L Leg"
-
-[node name="R Leg" type="Button" parent="CanvasLayer/Choice"]
-layout_mode = 2
-disabled = true
-text = "R Leg"
-
-[node name="Hip" type="Button" parent="CanvasLayer/Choice"]
-layout_mode = 2
-disabled = true
-text = "Hip"
-
-[node name="Torso" type="Button" parent="CanvasLayer/Choice"]
-layout_mode = 2
-disabled = true
-text = "Torso"
 
 [node name="Chest" type="Button" parent="CanvasLayer/Choice"]
 layout_mode = 2

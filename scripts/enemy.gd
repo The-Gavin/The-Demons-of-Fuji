@@ -33,6 +33,5 @@ func take_damage(value):
 		
 func on_death():
 	# Add death animation here
-	# Remove the enemy from the scene
 	enemy.hide()
 	dead = true
