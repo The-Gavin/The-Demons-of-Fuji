@@ -8,10 +8,11 @@
 
 [node name="Player" parent="." instance=ExtResource("1_pq0nd")]
 z_index = 1
-position = Vector2(-213, 146)
-scale = Vector2(2, 2)
+position = Vector2(-159, 151)
+scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-14, 58)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -2060.0
@@ -24,11 +25,11 @@ texture = ExtResource("1_mb8oc")
 follow_viewport_enabled = true
 
 [node name="Choice" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = -522.0
-offset_top = -137.0
-offset_right = -431.0
-offset_bottom = 139.0
-scale = Vector2(2, 2)
+offset_left = -431.0
+offset_top = -86.0
+offset_right = -311.0
+offset_bottom = 190.0
+scale = Vector2(1.5, 1.5)
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
@@ -42,14 +43,17 @@ text = "Uppercut"
 
 [node name="R Arm" type="Button" parent="CanvasLayer/Choice"]
 layout_mode = 2
-disabled = true
-text = "R Arm"
+text = "Shoulder Bash"
 
 [node name="Chest" type="Button" parent="CanvasLayer/Choice"]
 layout_mode = 2
-disabled = true
-text = "Chest"
+text = "Flame Breath"
 
 [node name="EnemyGroup" parent="." instance=ExtResource("3_n7pso")]
-position = Vector2(73, 14)
-scale = Vector2(2, 2)
+position = Vector2(120, 142)
+scale = Vector2(1.5, 1.5)
+
+[connection signal="pressed" from="CanvasLayer/Choice/Head" to="EnemyGroup" method="_on_head_pressed"]
+[connection signal="pressed" from="CanvasLayer/Choice/L Arm" to="EnemyGroup" method="_on_l_arm_pressed"]
+[connection signal="pressed" from="CanvasLayer/Choice/R Arm" to="EnemyGroup" method="_on_r_arm_pressed"]
+[connection signal="pressed" from="CanvasLayer/Choice/Chest" to="EnemyGroup" method="_on_chest_pressed"]

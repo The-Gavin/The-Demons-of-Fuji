@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4bi1fj7yxvca"]
+
+[ext_resource type="Script" path="res://scripts/flame.gd" id="1_8out3"]
+[ext_resource type="Texture2D" uid="uid://c5u4u3cx1ob7" path="res://assets/Pixel Flame Spritesheet.png" id="1_x4t6v"]
+
+[node name="Flame" type="Node2D"]
+script = ExtResource("1_8out3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+texture = ExtResource("1_x4t6v")

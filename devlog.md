@@ -1,3 +1,8 @@
+### 2024-11-19 - 1hr: Class Work
+*Finished implementation of fire level
+*Added two more more buttons for the other moves
+*Finished implementation of damage effects from fire level and flame breathing chest move
+
 ### 2024-11-12 - 2.5hr: Class Work
 * Fixed issue with killing the first enemy applying the directional damage to the second.
 * Created new scene for second level, updated trello with new tasks for second level

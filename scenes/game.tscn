@@ -1,10 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmk3tnw1571iy"]
+[gd_scene load_steps=6 format=3 uid="uid://bmk3tnw1571iy"]
 
 [ext_resource type="PackedScene" uid="uid://u5rlfpjx30gp" path="res://scenes/player.tscn" id="1_fehhq"]
 [ext_resource type="PackedScene" uid="uid://jq3mr7md2cra" path="res://scenes/enemy_group.tscn" id="2_66uvb"]
 [ext_resource type="Texture2D" uid="uid://c6ddr1a8c7tt0" path="res://assets/Previewx3.png" id="3_dastd"]
+[ext_resource type="PackedScene" uid="uid://d4bi1fj7yxvca" path="res://scenes/flame.tscn" id="4_p3wnm"]
+
+[sub_resource type="GDScript" id="GDScript_l2i8k"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+#func burn_stage():
+	#if hotFoot == true:
+		#flame.show()
+"
 
 [node name="Forest Stage" type="Node2D"]
+script = SubResource("GDScript_l2i8k")
 
 [node name="Player" parent="." instance=ExtResource("1_fehhq")]
 z_index = 1
@@ -16,6 +36,11 @@ zoom = Vector2(1.2, 1.2)
 
 [node name="EnemyGroup" parent="." instance=ExtResource("2_66uvb")]
 position = Vector2(264, -6)
+
+[node name="Flame" parent="." instance=ExtResource("4_p3wnm")]
+visible = false
+position = Vector2(251, 58)
+scale = Vector2(3, 3)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.737193, 0.737193, 0.737193, 1)
@@ -31,10 +56,10 @@ expand_mode = 1
 follow_viewport_enabled = true
 
 [node name="Choice" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = -198.0
-offset_top = -112.0
-offset_right = -142.0
-offset_bottom = 164.0
+offset_left = -223.0
+offset_top = -115.0
+offset_right = -103.0
+offset_bottom = 161.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
@@ -48,13 +73,11 @@ text = "Uppercut"
 
 [node name="R Arm" type="Button" parent="CanvasLayer/Choice"]
 layout_mode = 2
-disabled = true
-text = "R Arm"
+text = "Shoulder Bash"
 
 [node name="Chest" type="Button" parent="CanvasLayer/Choice"]
 layout_mode = 2
-disabled = true
-text = "Chest"
+text = "Flame Breath"
 
 [node name="TextEdit" type="TextEdit" parent="."]
 visible = false
@@ -66,3 +89,5 @@ text = "You Win!"
 
 [connection signal="pressed" from="CanvasLayer/Choice/Head" to="EnemyGroup" method="_on_head_pressed"]
 [connection signal="pressed" from="CanvasLayer/Choice/L Arm" to="EnemyGroup" method="_on_l_arm_pressed"]
+[connection signal="pressed" from="CanvasLayer/Choice/R Arm" to="EnemyGroup" method="_on_r_arm_pressed"]
+[connection signal="pressed" from="CanvasLayer/Choice/Chest" to="EnemyGroup" method="_on_chest_pressed"]
