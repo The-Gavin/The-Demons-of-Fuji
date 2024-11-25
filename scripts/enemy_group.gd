@@ -14,8 +14,16 @@ var min_x_position: float = 0  # Minimum Y position
 var max_x_position: float = 100
 var waiting_for_selection: bool = false
 var win = false
+var head_count: int
+var lArm_count: int
+var rArm_count: int
+var chest_count: int
 
 @onready var choice: VBoxContainer = $"../CanvasLayer/Choice"
+@onready var player: CharacterBody2D = $"../Player"
+@onready var lose_text: TextEdit = $"../Lose Text"
+@onready var win_text: TextEdit = $"../Win Text"
+@onready var flame: Node2D = $"../Flame"
 
 func _ready():
 	enemies = get_children()
@@ -51,6 +59,8 @@ func _process(_delta):
 func _action(stack: Array, apply_damage: bool = true, move_direction: String = "down"):
 	for i in stack:
 		if apply_damage:
+			if head_count > 1 || chest_count > 1 || lArm_count > 1 || rArm_count > 1:
+				player.take_damage(1)
 			enemies[i].take_damage(1)
 			if enemies[i].health <= 0:
 				enemies.erase(enemies[i])
@@ -66,12 +76,19 @@ func _action(stack: Array, apply_damage: bool = true, move_direction: String = "
 				elif move_direction == "right":
 					move_enemy(i, "right")
 		if hotFoot:
+			flame.show()
 			for enemy in enemies:
 				if enemy.position.y == max_y_position:
 					enemy.take_damage(1)
 
 	if enemies.size() == 0:
+		win_text.show()
+		await get_tree().create_timer(3).timeout
 		win = true
+	elif player.health <= 0:
+		lose_text.show()
+		await get_tree().create_timer(3).timeout
+		get_tree().reload_current_scene()
 	else:
 		action_queue.clear()
 		is_battling = false
@@ -100,21 +117,37 @@ func _start_choosing():
 
 func _on_head_pressed() -> void:
 	direction = "down" #set direction to send enemy
+	head_count += 1
+	chest_count = 0
+	lArm_count = 0
+	rArm_count = 0
 	choice.hide()
 	_start_choosing()
 
 func _on_l_arm_pressed() -> void:
 	direction = "up" #set direction to send enemy
+	head_count = 0
+	chest_count = 0
+	lArm_count += 1
+	rArm_count = 0
 	choice.hide()
 	_start_choosing()
 	
 func _on_r_arm_pressed() -> void:
 	direction = "right" #set direction to send enemy
+	head_count = 0
+	chest_count = 0
+	lArm_count = 0
+	rArm_count += 1
 	choice.hide()
 	_start_choosing()
 	
 func _on_chest_pressed() -> void:
 	direction = "none" #set direction to send enemy
+	head_count = 0
+	chest_count += 1
+	lArm_count = 0
+	rArm_count = 0
 	hotFoot = true
 	choice.hide()
 	_start_choosing()

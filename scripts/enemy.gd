@@ -4,6 +4,7 @@ extends Node2D
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var enemy: Node2D = $"."
+@onready var impact: Sprite2D = $Impact
 
 @export var MAX_HEALTH: float = 7
 
@@ -24,10 +25,16 @@ func focus():
  
 func unfocus():
 	_focus.hide()
+	
+func damage_visual():
+	impact.show()
+	await get_tree().create_timer(.25).timeout
+	impact.hide()
 
 func take_damage(value):
 	health -= value
 	_update_progress_bar()  # Update the progress bar after taking damage
+	damage_visual()
 	if health <= 0:
 		on_death()  # Call the death handler
 		

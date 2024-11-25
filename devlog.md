@@ -1,3 +1,15 @@
+### 2024-11-25 - 1hr: Self-damage and end screens
+*Finished implementation of self-damage mechanic
+*Added win screen before level progression
+*Added lose screen when player dies
+*Known error: when killing an enemy with a shoulder bash, they are not erased from the array and must be targetted with another attack to stay dead
+*Updated player sprite
+
+### 2024-11-21 - 2hr: Finishing move list
+*Finished implementation of 4th move
+*Finished implementation of all attack movement mechanics
+*Added impact sprite for enemy taking damage
+
 ### 2024-11-19 - 1hr: Class Work
 *Finished implementation of fire level
 *Added two more more buttons for the other moves
