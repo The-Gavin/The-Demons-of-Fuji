@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwignwhqxc610"]
+[gd_scene load_steps=6 format=3 uid="uid://bwignwhqxc610"]
 
 [ext_resource type="Texture2D" uid="uid://cd82t3g76g07w" path="res://assets/lava.jpg" id="1_mb8oc"]
 [ext_resource type="PackedScene" uid="uid://u5rlfpjx30gp" path="res://scenes/player.tscn" id="1_pq0nd"]
 [ext_resource type="PackedScene" uid="uid://jq3mr7md2cra" path="res://scenes/enemy_group.tscn" id="3_n7pso"]
 [ext_resource type="AudioStream" uid="uid://b1jfclegoleac" path="res://assets/music/Corona Mountain - Super Mario Sunshine.mp3" id="4_5dyfa"]
+[ext_resource type="PackedScene" uid="uid://d4bi1fj7yxvca" path="res://scenes/flame.tscn" id="5_nn4ty"]
 
 [node name="Lava Stage" type="Node2D"]
 
@@ -16,6 +17,7 @@ scale = Vector2(2, 2)
 position = Vector2(-14, 58)
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = -5
 offset_left = -2060.0
 offset_top = -728.0
 offset_right = 574.0
@@ -58,6 +60,11 @@ scale = Vector2(1.5, 1.5)
 stream = ExtResource("4_5dyfa")
 volume_db = -10.0
 autoplay = true
+
+[node name="Flame" parent="." instance=ExtResource("5_nn4ty")]
+visible = false
+position = Vector2(204, 245)
+scale = Vector2(3, 3)
 
 [connection signal="pressed" from="CanvasLayer/Choice/Head" to="EnemyGroup" method="_on_head_pressed"]
 [connection signal="pressed" from="CanvasLayer/Choice/L Arm" to="EnemyGroup" method="_on_l_arm_pressed"]
