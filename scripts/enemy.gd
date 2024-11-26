@@ -5,6 +5,7 @@ extends Node2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var enemy: Node2D = $"."
 @onready var impact: Sprite2D = $Impact
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var MAX_HEALTH: float = 7
 
@@ -28,6 +29,7 @@ func unfocus():
 	
 func damage_visual():
 	impact.show()
+	audio_stream_player_2d.play()
 	await get_tree().create_timer(.25).timeout
 	impact.hide()
 

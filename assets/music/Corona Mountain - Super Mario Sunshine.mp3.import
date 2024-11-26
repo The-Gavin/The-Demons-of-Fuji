@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1jfclegoleac"
+path="res://.godot/imported/Corona Mountain - Super Mario Sunshine.mp3-34bcb720af7594f403858b53f2a09d29.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Corona Mountain - Super Mario Sunshine.mp3"
+dest_files=["res://.godot/imported/Corona Mountain - Super Mario Sunshine.mp3-34bcb720af7594f403858b53f2a09d29.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

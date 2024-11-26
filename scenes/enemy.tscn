@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bphs026kv65da"]
+[gd_scene load_steps=6 format=3 uid="uid://bphs026kv65da"]
 
 [ext_resource type="Texture2D" uid="uid://dsmrdhu7w3h3d" path="res://assets/06.png" id="1_0bhcn"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_6r7ug"]
 [ext_resource type="Texture2D" uid="uid://b82xrawb6sf2t" path="res://assets/blue circle.png" id="3_ca7b5"]
 [ext_resource type="Texture2D" uid="uid://djr51uukxpvwe" path="res://assets/impact.png" id="4_jbl3q"]
+[ext_resource type="AudioStream" uid="uid://etlppeucr2v5" path="res://assets/music/hit.mp3" id="5_2viyq"]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_6r7ug")
@@ -32,3 +33,7 @@ z_index = -1
 position = Vector2(2, -10)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_jbl3q")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_2viyq")
+volume_db = -5.0
